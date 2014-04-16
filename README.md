@@ -28,12 +28,12 @@ I can't say that I followed every Go idiom as efficiently as possible, but the p
 Install
 -------
 
-go get github.com/neocortical/doublet
+go get github.com/neocortical/go-doublet
 
 Run
 ---
 
-$ doublet <dicionary_file.txt>
+$ go-doublet \<dicionary_file.txt\>
 
 The dictionary file should be a plain text file containing one word per line. Invalid words (those containing non-alpha characters) will be ignored.
 
