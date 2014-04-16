@@ -48,6 +48,8 @@ Links
 -----
 
 The A* search algorithm: http://en.wikipedia.org/wiki/A*_search_algorithm
+
 The dictionary I used: http://www-01.sil.org/linguistics/wordlists/english/
+
 Interesting blog post on graphing doublets using Wolfram Alpha/Mathematica: http://blog.wolfram.com/2012/01/11/the-longest-word-ladder-puzzle-ever/
 
