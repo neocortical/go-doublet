@@ -24,7 +24,7 @@ func main() {
 		
 		result, dur := Doublet(words[0], words[1], dict, graph)
 		if result != nil {
-			fmt.Printf("Found a path from %s to %s in %d steps:\n", words[0], words[1], len(*result))
+			fmt.Printf("Found a path from %s to %s in %d steps:\n", words[0], words[1], (len(*result) - 1))
 			for i, step := range *result {
 				fmt.Printf("%s ", step)
 				if i < len(*result) - 1 {
