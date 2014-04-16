@@ -35,7 +35,7 @@ Run
 
 $ go-doublet \<dicionary_file.txt\>
 
-The dictionary file should be a plain text file containing one word per line. Invalid words (those containing non-alpha characters) will be ignored.
+The dictionary file should be a plain text file containing one word per line. Invalid words (those containing non-alpha characters) will be ignored. There is a decent dictionary file included under the res/ directory.
 
 Notes
 -----
