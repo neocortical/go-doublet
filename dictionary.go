@@ -1,11 +1,11 @@
 package main
 
 import (
-	"os"
 	"bufio"
+	"fmt"
+	"os"
 	"regexp"
 	"strings"
-	"fmt"
 	"time"
 )
 
@@ -13,16 +13,16 @@ type Dictionary map[string]bool
 
 func initDictionary(fName string) *Dictionary {
 	startTime := time.Now()
-	fmt.Printf("Loading dictionary...")
-	
+	fmt.Printf("Loading dictionary...\t")
+
 	file, err := os.Open(fName)
 	if err != nil {
 		panic(err)
 	}
 	defer file.Close()
-	
+
 	dict := make(Dictionary)
-	
+
 	scanner := bufio.NewScanner(file)
 	for scanner.Scan() {
 		// words must be lowercase and alpha-only
@@ -33,9 +33,9 @@ func initDictionary(fName string) *Dictionary {
 			dict[word] = true
 		}
 	}
-	
-	fmt.Printf("Loaded dictionary in %d ms\n", time.Since(startTime) / 1000000)
-	
+
+	fmt.Printf("Loaded dictionary in %d ms\n", time.Since(startTime)/1000000)
+
 	return &dict
 }
 
