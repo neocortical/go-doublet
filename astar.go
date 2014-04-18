@@ -1,20 +1,20 @@
 package main
 
 import (
-	"strings"
 	"container/heap"
-	"time"
 	"fmt"
+	"strings"
+	"time"
 )
 
 type Set map[string]*Node
 
 func Doublet(a string, b string, dict *Dictionary, graph *Wordgraph) (*[]string, time.Duration) {
 	startTime := time.Now()
-	
+
 	a = strings.ToLower(a)
 	b = strings.ToLower(b)
-	
+
 	if len(a) != len(b) {
 		fmt.Printf("Error: a and b must be the same length\n")
 		return nil, time.Since(startTime)
@@ -23,7 +23,7 @@ func Doublet(a string, b string, dict *Dictionary, graph *Wordgraph) (*[]string,
 		fmt.Printf("Error: a and b must be valid dictionary words\n")
 		return nil, time.Since(startTime)
 	}
-	
+
 	queue := &PriorityQueue{}
 	heap.Init(queue)
 	openset := make(Set)
@@ -31,7 +31,7 @@ func Doublet(a string, b string, dict *Dictionary, graph *Wordgraph) (*[]string,
 	node := Node{b, 0, estimateCost(b, a), nil, 0}
 	heap.Push(queue, &node)
 	openset[node.Word] = &node
-	
+
 	for queue.Len() > 0 {
 		current := heap.Pop(queue).(*Node)
 		delete(openset, current.Word)
@@ -39,15 +39,15 @@ func Doublet(a string, b string, dict *Dictionary, graph *Wordgraph) (*[]string,
 		if current.Word == a {
 			return reconstructPath(current), time.Since(startTime)
 		}
-		
+
 		closedset[current.Word] = current
-				
+
 		// exapnd neighbors
 		for _, neighbor := range (*graph)[current.Word] {
 			if closedset[neighbor] != nil {
 				continue
 			}
-			
+
 			gval := current.Gval + 1
 			neighborNode := openset[neighbor]
 			if neighborNode == nil {
@@ -74,7 +74,7 @@ func estimateCost(from string, goal string) int {
 		}
 	}
 
-  return result
+	return result
 }
 
 func reconstructPath(node *Node) *[]string {
@@ -83,6 +83,6 @@ func reconstructPath(node *Node) *[]string {
 		result = append(result, node.Word)
 		node = node.Prev
 	}
-	
+
 	return &result
 }

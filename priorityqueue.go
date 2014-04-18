@@ -1,13 +1,12 @@
 package main
 
-import (
-)
+import ()
 
 type Node struct {
-	Word string
-	Gval int
-	Hval int
-	Prev *Node
+	Word  string
+	Gval  int
+	Hval  int
+	Prev  *Node
 	Index int
 }
 

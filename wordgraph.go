@@ -12,9 +12,9 @@ type Wordgraph map[string][]string
 func initWordgraph(dict *Dictionary) *Wordgraph {
 	fmt.Printf("Loading word graph...")
 	startTime := time.Now()
-	
+
 	graph := make(Wordgraph)
-	
+
 	for word, _ := range *dict {
 		neighbors := []string{}
 		for _, replacement := range ALPHA {
@@ -27,8 +27,8 @@ func initWordgraph(dict *Dictionary) *Wordgraph {
 		}
 		graph[word] = neighbors
 	}
-	
-	fmt.Printf("Loaded word graph in %d ms\n", time.Since(startTime) / 1000000)
-	
+
+	fmt.Printf("Loaded word graph in %d ms\n", time.Since(startTime)/1000000)
+
 	return &graph
 }
