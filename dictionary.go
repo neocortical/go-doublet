@@ -13,7 +13,7 @@ type Dictionary map[string]bool
 
 func initDictionary(fName string) *Dictionary {
 	startTime := time.Now()
-	fmt.Printf("Loading dictionary...")
+	fmt.Printf("Loading dictionary...\t")
 
 	file, err := os.Open(fName)
 	if err != nil {

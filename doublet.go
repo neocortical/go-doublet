@@ -7,14 +7,22 @@ import (
 	"strings"
 )
 
+func usage() {
+	fmt.Println("$ go-doublet <dicionary_file.txt>")
+}
+
 func main() {
+	if len(os.Args) < 2 {
+		usage()
+		os.Exit(0)
+	}
 
 	dictFname := os.Args[1]
 	dict := initDictionary(dictFname)
 	graph := initWordgraph(dict)
 
 	scanner := bufio.NewScanner(os.Stdin)
-	fmt.Printf("Enter two equal-length words separated by a space: ")
+	fmt.Printf("\nEnter two equal-length words separated by a space: ")
 	for scanner.Scan() {
 		words := strings.Split(scanner.Text(), " ")
 		if len(words) < 2 {
@@ -39,8 +47,7 @@ func main() {
 			fmt.Printf("No path could be found between %s and %s\n", words[0], words[1])
 		}
 		fmt.Printf("Algorithm ran in %d us\n", dur/1000)
-
-		fmt.Printf("Enter two equal-length words separated by a space: ")
+		fmt.Printf("\nEnter two equal-length words separated by a space: ")
 	}
 
 	os.Exit(0)

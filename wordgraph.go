@@ -10,7 +10,7 @@ const ALPHA = "abcdefghijklmnopqrstuvwxyz"
 type Wordgraph map[string][]string
 
 func initWordgraph(dict *Dictionary) *Wordgraph {
-	fmt.Printf("Loading word graph...")
+	fmt.Printf("Loading word graph...\t")
 	startTime := time.Now()
 
 	graph := make(Wordgraph)
